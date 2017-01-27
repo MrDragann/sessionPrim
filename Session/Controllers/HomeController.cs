@@ -10,20 +10,34 @@ namespace Session.Controllers
     {
         public ActionResult Index()
         {
+            if (Session["Count"] == null)
+            {
+                Session["Count"] = 1;
+            }
+            else
+            {
+                int count = (int)Session["Count"];
+                count++;
+                Session["Count"] = count;
+            }
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
+            
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            
+            return View();
+        }
 
+        public ActionResult MySession()
+        {
+            Session["SessionText"] = "Данный текст хранится в объекте Session";
             return View();
         }
     }
